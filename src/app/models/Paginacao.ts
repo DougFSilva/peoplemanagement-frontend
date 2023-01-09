@@ -1,9 +1,11 @@
-export interface Paginacao {
-  totalPages: number,
-  totalElements: number,
-  number: number,
-  numberOfElements: number,
-  first: boolean,
-  last: boolean,
-  size: number,
+export class Paginacao {
+  constructor(
+    public totalDePaginas: number,
+    public totalDeElementos: number,
+    public numeroDaPagina: number,
+    public numeroDeElementos: number,
+    public primeira: boolean,
+    public ultima: boolean,
+    public elementosPorPagina: number
+  ) {}
 }

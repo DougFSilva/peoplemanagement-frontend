@@ -1,0 +1,36 @@
+.container {
+  width: 25rem;
+  height: 100%;
+}
+
+h1 {
+  font-weight: 500;
+  text-align: center;
+}
+
+.input-logradouro {
+  width: 100% ;
+}
+
+.input-numero {
+  width: 48% ;
+}
+
+.input-cep {
+  width: 48% ;
+  margin-left: 4%;
+}
+
+.input-cidade {
+  width: 50% ;
+}
+
+.input-principal {
+  margin-left: 20%;
+  width: 30% ;
+}
+
+button {
+  width: 100%;
+  margin-top: .2rem;
+}

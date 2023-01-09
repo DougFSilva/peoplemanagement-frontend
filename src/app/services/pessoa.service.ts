@@ -1,3 +1,4 @@
+import { DadosCriarEndereco } from './../models/DadosCriarEndereco';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -18,15 +19,15 @@ export class PessoaService {
     return this.http.post<Pessoa>(`${environment.baseUrl}/pessoa`, dados);
   }
 
-  public deletarPessoa(id: number):void {
-    this.http.delete(`${environment.baseUrl}/pessoa/${id}`);
+  public deletarPessoa(id: number):Observable<Pessoa> {
+   return this.http.delete<Pessoa>(`${environment.baseUrl}/pessoa/${id}`);
   }
 
   public editarPessoa(id: number, dados: DadosCriarOuEditarPessoa):Observable<Pessoa> {
     return this.http.put<Pessoa>(`${environment.baseUrl}/pessoa/${id}`, dados);
   }
 
-  public adicionarEndereco(id: number, endereco: Endereco):Observable<Pessoa>{
+  public adicionarEndereco(id: number, endereco: DadosCriarEndereco):Observable<Pessoa>{
     return this.http.post<Pessoa>(`${environment.baseUrl}/pessoa/${id}/adicionar-endereco`, endereco);
   }
 
@@ -42,20 +43,20 @@ export class PessoaService {
     return this.http.get<Pessoa>(`${environment.baseUrl}/pessoa/${id}`);
   }
 
-  public buscarPessoasPeloNome(nome: string):Observable<Pessoa[]> {
-    return this.http.get<Pessoa[]>(`${environment.baseUrl}/pessoa/nome/${nome}`);
+  public buscarPessoasPeloNome(nome: string, pagina: number, pessoasPorPagina: number):Observable<any> {
+    return this.http.get<Pessoa[]>(`${environment.baseUrl}/pessoa/nome/${nome}?page=${pagina}&size=${pessoasPorPagina}`);
   }
 
-  public buscarPessoasPelaCidade(cidade: string):Observable<Pessoa[]> {
-    return this.http.get<Pessoa[]>(`${environment.baseUrl}/pessoa/cidade/${cidade}`);
+  public buscarPessoasPelaCidade(cidade: string, pagina: number, pessoasPorPagina: number):Observable<any> {
+    return this.http.get<Pessoa[]>(`${environment.baseUrl}/pessoa/cidade/${cidade}?page=${pagina}&size=${pessoasPorPagina}`);
   }
 
-  public buscarPessoasPeloCep(cep: string):Observable<Pessoa[]> {
-    return this.http.get<Pessoa[]>(`${environment.baseUrl}/pessoa/cep/${cep}`);
+  public buscarPessoasPeloCep(cep: string, pagina: number, pessoasPorPagina: number):Observable<any> {
+    return this.http.get<Pessoa[]>(`${environment.baseUrl}/pessoa/cep/${cep}?page=${pagina}&size=${pessoasPorPagina}`);
   }
 
-  public buscarTodasPessoas():Observable<Pessoa[]> {
-    return this.http.get<Pessoa[]>(`${environment.baseUrl}/pessoa`);
+  public buscarTodasPessoas(pagina: number, pessoasPorPagina: number):Observable<any> {
+    return this.http.get<Pessoa[]>(`${environment.baseUrl}/pessoa?page=${pagina}&size=${pessoasPorPagina}`);
   }
 
 }
